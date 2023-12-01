@@ -1,11 +1,18 @@
 function PracticalForm() {
     return (
-        <div className="practical-info">
+        <div className="form practical-info">
+            <h2>Practical Experience</h2>
             <form>
+                <label htmlFor="company-name">Company</label>
                 <input type="text" id="company-name" />
+                <label htmlFor="position-title">Position</label>
                 <input type="text" id="position-title" />
+                <label htmlFor="responsibilities">Responsibilities</label>
                 <input type="text" id="responsibilities" />
-                <input type="date" id="company-date"/>
+                <label htmlFor="initial-company-date">Initial Date</label>
+                <input type="date" id="initial-company-date"/>
+                <label htmlFor="end-company-date">End Date</label>
+                <input type="date" id="end-company-date"/>
             </form>
         </div>
     )
