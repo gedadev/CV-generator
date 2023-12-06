@@ -47,7 +47,7 @@ body {
   margin: 0 0 1.5rem;
 }
 
-.form input {
+.form input, .form textarea {
   background-color: rgb(222, 222, 222);
   border: none;
   width: 80%;
