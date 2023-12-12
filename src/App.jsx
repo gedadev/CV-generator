@@ -1,33 +1,51 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './styles/App.css'
+import './styles/preview.css'
+import ContactForm from './components/contactForm'
+import EducationForm from './components/educationForm'
+import PracticalForm from './components/practicalForm'
+import Preview from './components/preview'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [contactValues, setContactValues] = useState(['name', 'mail', 'phone', 'address'])
+  const [educationValues, setEducationValues] = useState(['school', 'degree', '2020-01-01', '2020-01-01'])
+  const [practicalValues, setPracticalValues] = useState(['company', 'title', 'responsibilities', '2020-01-01', '2020-01-01'])
+  
+
+  const updateContactStates = (index, newValue, setValues) => {
+    const updatedArray = [...contactValues]
+    updatedArray[index] = newValue
+    setValues(updatedArray)
+  }
+  
+  const handleInput = (e) => {
+    if (e.target.id === 'name') updateContactStates(0, e.target.value, setContactValues)
+    if (e.target.id === 'email') updateContactStates(1, e.target.value, setContactValues)
+    if (e.target.id === 'phone') updateContactStates(2, e.target.value, setContactValues)
+    if (e.target.id === 'address') updateContactStates(3, e.target.value, setContactValues)
+
+    if (e.target.id === 'school-name') updateContactStates(0, e.target.value, setEducationValues)
+    if (e.target.id === 'degree') updateContactStates(1, e.target.value, setEducationValues)
+    if (e.target.id === 'initial-school-date') updateContactStates(2, e.target.value, setEducationValues)
+    if (e.target.id === 'end-school-date') updateContactStates(3, e.target.value, setEducationValues)
+
+    if (e.target.id === 'company-name') updateContactStates(0, e.target.value, setPracticalValues)
+    if (e.target.id === 'position-title') updateContactStates(1, e.target.value, setPracticalValues)
+    if (e.target.id === 'responsibilities') updateContactStates(2, e.target.value, setPracticalValues)
+    if (e.target.id === 'initial-company-date') updateContactStates(3, e.target.value, setPracticalValues)
+    if (e.target.id === 'end-company-date') updateContactStates(4, e.target.value, setPracticalValues)
+}
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="content-information">
+        <ContactForm contactValues={contactValues} handleInput={handleInput} />
+        <EducationForm educationValues={educationValues} handleInput={handleInput} />
+        <PracticalForm practicalValues={practicalValues} handleInput={handleInput} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="preview">
+        <Preview></Preview>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
