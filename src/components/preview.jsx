@@ -1,11 +1,13 @@
-function Preview() {
+import EducationCard from "./educationCard"
+
+function Preview({ contactValues, educationValues, practicalValues }) {
     return (
         <div className="cv-document">
-            <h1>John Doe</h1>
+            <h1>{contactValues[0]}</h1>
             <div className="personal-information-container">
-                <p><i className="fa-solid fa-envelope"></i> : john.doe@mail.com</p>
-                <p><i className="fa-solid fa-phone"></i> : 123-456-789</p>
-                <p><i className="fa-solid fa-location-dot"></i> : Mexico</p>
+                <p><i className="fa-solid fa-envelope"></i> : {contactValues[1]}</p>
+                <p><i className="fa-solid fa-phone"></i> : {contactValues[2]}</p>
+                <p><i className="fa-solid fa-location-dot"></i> : {contactValues[3]}</p>
             </div>
             <div className="professional-experience-container">
                 <h2>Professional Experience</h2>
@@ -24,11 +26,9 @@ function Preview() {
             </div>
             <div className="educational-experience-container">
                 <h2>Educational Experience</h2>
-                <div className="education-item">
-                    <p>04/12/23 — 05/12/27</p>
-                    <h3>University of Piltover</h3>
-                    <p>Computer Science</p>
-                </div>
+                {educationValues.map((educationElement, index) => (
+                    <EducationCard educationElement={educationElement} index={index}></EducationCard>
+                ))}
             </div>
         </div>
     )
