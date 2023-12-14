@@ -4,12 +4,14 @@ import './styles/preview.css'
 import ContactForm from './components/contactForm'
 import EducationForm from './components/educationForm'
 import PracticalForm from './components/practicalForm'
+import PracticalSection from './components/practicalSection'
 import Preview from './components/preview'
+import FormContainer from './components/formContainer'
 
 function App() {
   const [contactValues, setContactValues] = useState(['name', 'mail', 'phone', 'address'])
-  const [educationValues, setEducationValues] = useState(['school', 'degree', '2020-01-01', '2020-01-01'])
-  const [practicalValues, setPracticalValues] = useState(['company', 'title', 'responsibilities', '2020-01-01', '2020-01-01'])
+  const [educationValues, setEducationValues] = useState([['school', 'degree', '2020-01-01', '2020-01-01']])
+  const [practicalValues, setPracticalValues] = useState([['company', 'title', 'responsibilities', '2020-01-01', '2020-01-01'], []])
   
 
   const updateContactStates = (index, newValue, setValues) => {
@@ -36,15 +38,21 @@ function App() {
     if (e.target.id === 'end-company-date') updateContactStates(4, e.target.value, setPracticalValues)
 }
 
+const addElement = () => {
+  const updatedArray = [...educationValues]
+  updatedArray.push(['', '', '', ''])
+  setEducationValues(updatedArray)
+}
+
   return (
     <>
       <div className="content-information">
         <ContactForm contactValues={contactValues} handleInput={handleInput} />
-        <EducationForm educationValues={educationValues} handleInput={handleInput} />
-        <PracticalForm practicalValues={practicalValues} handleInput={handleInput} />
+        <FormContainer educationValues={educationValues} handleInput={handleInput} addElement={addElement}></FormContainer>
+        <PracticalSection practicalValues={practicalValues} handleInput={handleInput} />
       </div>
       <div className="preview">
-        <Preview></Preview>
+        <Preview contactValues={contactValues} educationValues={educationValues} practicalValues={practicalValues}></Preview>
       </div>
     </>
   )

@@ -6,7 +6,6 @@ function EducationForm({ educationValues, handleInput}) {
 
     return (
         <div className="form education-info">
-            <h2>Educational Experience</h2>
             <form>
                 <label htmlFor="school-name">School</label>
                 <input type="text" id="school-name" value={school} onChange={handleInput} />
