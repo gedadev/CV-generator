@@ -30,7 +30,7 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.form, .education-form-container {
+.form, .education-form-container, .practical-form-container {
   border-radius: 1rem;
   background-color: rgb(158, 158, 158);
   width: clamp(300px, 35vw,440px);

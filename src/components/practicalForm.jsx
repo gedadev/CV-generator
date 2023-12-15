@@ -6,8 +6,7 @@ function PracticalForm({ practicalValues, handleInput }) {
     const endDate = practicalValues[4]
 
     return (
-        <div className="form practical-info">
-            <h2>Practical Experience</h2>
+        <div className="form education-info">
             <form>
                 <label htmlFor="company-name">Company</label>
                 <input type="text" id="company-name" value={company} onChange={handleInput} />
