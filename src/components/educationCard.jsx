@@ -1,9 +1,9 @@
 function EducationCard({ educationElement, index }) {
     return (
         <div className="education-item" key={index}>
-            <p>{educationElement[2]} — {educationElement[3]}</p>
-            <h3>{educationElement[0]}</h3>
-            <p>{educationElement[1]}</p>
+            <p>{educationElement.initDate} — {educationElement.endDate}</p>
+            <h3>{educationElement.school}</h3>
+            <p>{educationElement.degree}</p>
         </div>
     )
 }

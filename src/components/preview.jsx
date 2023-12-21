@@ -2,6 +2,7 @@ import PracticalCard from "./PracticalCard"
 import EducationCard from "./educationCard"
 
 function Preview({ contactValues, educationValues, practicalValues }) {
+    // console.log(educationValues)
     return (
         <div className="cv-document">
             <h1>{contactValues[0]}</h1>
@@ -18,8 +19,8 @@ function Preview({ contactValues, educationValues, practicalValues }) {
             </div>
             <div className="educational-experience-container">
                 <h2>Educational Experience</h2>
-                {educationValues.map((educationElement, index) => (
-                    <EducationCard educationElement={educationElement} index={index}></EducationCard>
+                {educationValues.map((educationElement) => (
+                    <EducationCard educationElement={educationElement} index={educationElement.id}></EducationCard>
                 ))}
             </div>
         </div>
