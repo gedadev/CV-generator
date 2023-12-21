@@ -1,23 +1,17 @@
 function PracticalForm({ practicalValues, handleInput }) {
-    const company = practicalValues[0]
-    const title = practicalValues[1]
-    const responsibilities = practicalValues[2]
-    const initDate = practicalValues[3]
-    const endDate = practicalValues[4]
-
     return (
         <div className="form education-info">
             <form>
                 <label htmlFor="company-name">Company</label>
-                <input type="text" id="company-name" value={company} onChange={handleInput} />
+                <input type="text" id="company-name" value={practicalValues.company} onChange={(e) => handleInput(practicalValues.id, e.target)} />
                 <label htmlFor="position-title">Position</label>
-                <input type="text" id="position-title" value={title} onChange={handleInput} />
+                <input type="text" id="position-title" value={practicalValues.position} onChange={(e) => handleInput(practicalValues.id, e.target)} />
                 <label htmlFor="responsibilities">Responsibilities</label>
-                <textarea name="responsibilities" id="responsibilities" cols="30" rows="4" value={responsibilities} onChange={handleInput}></textarea>
+                <textarea name="responsibilities" id="responsibilities" cols="30" rows="4" value={practicalValues.responsibilities} onChange={(e) => handleInput(practicalValues.id, e.target)}></textarea>
                 <label htmlFor="initial-company-date">Initial Date</label>
-                <input type="date" id="initial-company-date" value={initDate} onChange={handleInput} />
+                <input type="date" id="initial-company-date" value={practicalValues.initDate} onChange={(e) => handleInput(practicalValues.id, e.target)} />
                 <label htmlFor="end-company-date">End Date</label>
-                <input type="date" id="end-company-date" value={endDate} onChange={handleInput} />
+                <input type="date" id="end-company-date" value={practicalValues.endDate} onChange={(e) => handleInput(practicalValues.id, e.target)} />
             </form>
         </div>
     )

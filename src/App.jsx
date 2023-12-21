@@ -10,7 +10,7 @@ import { v4 as uuid } from 'uuid';
 function App() {
   const [contactValues, setContactValues] = useState(['name', 'mail', 'phone', 'address'])
   const [educationValues, setEducationValues] = useState([{school: 'school', degree: 'degree', initDate: '2020-01-01', endDate: '2020-01-01', id: uuid()}])
-  const [practicalValues, setPracticalValues] = useState([['company', 'title', 'responsibilities', '2020-01-01', '2020-01-01']])
+  const [practicalValues, setPracticalValues] = useState([{company: 'company', position: 'position', responsibilities: 'responsibilities', initDate: '2020-01-01', endDate: '2020-01-01', id: uuid()}])
   
   const updateContactStates = (index, newValue) => {
     const updatedArray = [...contactValues]
@@ -25,19 +25,25 @@ function App() {
     if (e.target.id === 'address') updateContactStates(3, e.target.value)
   }
 
-  const updateStates = (id, key, value, setValues) => {
-    const update = educationValues.map(element => {
+  const updateStates = (id, key, value, state, setState) => {
+    const update = state.map(element => {
       if (element.id === id) element[key] = value
       return element
     })
-    setValues(update)
+    setState(update)
   }
 
   const handleInput = (id, node) => {
-    if (node.id  === 'school-name') updateStates(id, 'school', node.value, setEducationValues)
-    if (node.id  === 'degree') updateStates(id, 'degree', node.value, setEducationValues)
-    if (node.id  === 'initial-school-date') updateStates(id, 'initDate', node.value, setEducationValues)
-    if (node.id  === 'end-school-date') updateStates(id, 'endDate', node.value, setEducationValues)
+    if (node.id  === 'school-name') updateStates(id, 'school', node.value, educationValues, setEducationValues)
+    if (node.id  === 'degree') updateStates(id, 'degree', node.value, educationValues, setEducationValues)
+    if (node.id  === 'initial-school-date') updateStates(id, 'initDate', node.value, educationValues, setEducationValues)
+    if (node.id  === 'end-school-date') updateStates(id, 'endDate', node.value, educationValues, setEducationValues)
+
+    if (node.id === 'company-name') updateStates(id, 'company', node.value, practicalValues, setPracticalValues)
+    if (node.id === 'position-title') updateStates(id, 'position', node.value, practicalValues, setPracticalValues)
+    if (node.id === 'responsibilities') updateStates(id, 'responsibilities', node.value, practicalValues, setPracticalValues)
+    if (node.id === 'initial-company-date') updateStates(id, 'initDate', node.value, practicalValues, setPracticalValues)
+    if (node.id === 'end-company-date') updateStates(id, 'endDate', node.value, practicalValues, setPracticalValues)
   }
 
   const addEducationElement = () => {
@@ -48,7 +54,7 @@ function App() {
 
   const addPracticalElement = () => {
     const updatedArray = [...practicalValues]
-    updatedArray.push(['', '', '', ''])
+    updatedArray.push({company: '', position: '', responsibilities: '', initDate: '', endDate: '', id: uuid()})
     setPracticalValues(updatedArray)
   }
 
@@ -56,8 +62,8 @@ function App() {
     <>
       <div className="content-information">
         <ContactForm contactValues={contactValues} handleContactInput={handleContactInput} />
-        <EducationFormContainer educationValues={educationValues} updateStates={handleInput} addElement={addEducationElement}></EducationFormContainer>
         <PracticalFormContainer practicalValues={practicalValues} handleInput={handleInput} addElement={addPracticalElement}></PracticalFormContainer>
+        <EducationFormContainer educationValues={educationValues} updateStates={handleInput} addElement={addEducationElement}></EducationFormContainer>
       </div>
       <div className="preview">
         <Preview contactValues={contactValues} educationValues={educationValues} practicalValues={practicalValues}></Preview>
