@@ -30,13 +30,13 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.form, .education-form-container, .practical-form-container {
+.form, .education-form-container, .practical-elements-container {
   border-radius: 1rem;
   background-color: rgb(158, 158, 158);
   width: clamp(300px, 35vw,440px);
 }
 
-.form > h2, .education-form-container > h2, .practical-form-container > h2 {
+.form > h2, .education-form-container > h2, .practical-elements-container > h2 {
   margin: 1rem 0 0;
 }
 
@@ -61,15 +61,39 @@ body {
   margin: 0.8rem 2.2rem 0.3rem;
 }
 
-.add-element {
+.button {
   cursor: pointer;
   background-color: rgb(222, 222, 222);
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.2rem;
   font-weight: bold;
   border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.button:hover {
+  box-shadow: 0px 0px 4px rgb(1, 1, 1);
+  background-color: rgb(230, 230, 230);
+}
+
+.add-element {
+  font-size: 1.2rem;
   padding: 0.7rem 1rem;
   margin: 1rem 0;
+}
+
+.collapsed-element {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: aqua; */
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: rgb(130, 130, 130);
+}
+
+.edit-element {
+  font-size: 1rem;
+  padding: 0.2rem 0.8rem;
 }
 
 @media (max-width: 900px) {
