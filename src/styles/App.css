@@ -84,8 +84,13 @@ body {
 }
 
 .button:hover {
-  box-shadow: 0px 0px 4px rgb(1, 1, 1);
+  box-shadow: 0px 0px 6px rgb(1, 1, 1);
   background-color: rgb(230, 230, 230);
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-around;
 }
 
 .add-element {
@@ -104,9 +109,13 @@ body {
   background-color: rgb(130, 130, 130);
 }
 
-.edit-element, .save-element {
+.edit-element, .save-element, .del-element {
   font-size: 1rem;
   padding: 0.2rem 0.8rem;
+}
+
+.del-element:hover {
+  background-color: rgb(255, 175, 175);
 }
 
 @media (max-width: 900px) {
