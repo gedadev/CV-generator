@@ -3,9 +3,8 @@ import './styles/App.css'
 import './styles/preview.css'
 import ContactForm from './components/contactForm'
 import Preview from './components/preview'
-import EducationFormContainer from './components/educationFormContainer'
-import PracticalFormContainer from './components/practicalFormContainer'
 import PracticalElement from './components/practicalElement'
+import EducationElement from './components/educationElement'
 import { v4 as uuid } from 'uuid';
 
 function App() {
@@ -68,7 +67,11 @@ function App() {
           <PracticalElement practicalValues={practicalValues} handleInput={handleInput}></PracticalElement>
           <button className='button add-element' type="button" onClick={addPracticalElement}>+ Practical</button>
         </div>
-        {/* <EducationFormContainer educationValues={educationValues} updateStates={handleInput} addElement={addEducationElement}></EducationFormContainer> */}
+        <div className="practical-elements-container">
+          <h2>Educational Experience</h2>
+          <EducationElement educationValues={educationValues} handleInput={handleInput}></EducationElement>
+          <button className='button add-element' type="button" onClick={addEducationElement}>+ Education</button>
+        </div>
       </div>
       <div className="preview">
         <Preview contactValues={contactValues} educationValues={educationValues} practicalValues={practicalValues}></Preview>
