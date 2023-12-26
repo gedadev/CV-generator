@@ -62,17 +62,33 @@ function App() {
     return newElement.id
   }
 
+  const deletePracticalElement = (id) => {
+    const update = []
+    practicalValues.forEach((element) => {
+      if (element.id !== id) update.push(element)
+    })
+    setPracticalValues(update)
+  }
+
+  const deleteEducationElement = (id) => {
+    const update = []
+    educationValues.forEach((element) => {
+      if (element.id !== id) update.push(element)
+    })
+    setEducationValues(update)
+  }
+
   return (
     <>
       <div className="content-information">
         <ContactForm contactValues={contactValues} handleContactInput={handleContactInput} />
         <div className="practical-elements-container">
           <h2>Practical Experience</h2>
-          <PracticalElement practicalValues={practicalValues} handleInput={handleInput} addPracticalElement={addPracticalElement}></PracticalElement>
+          <PracticalElement practicalValues={practicalValues} handleInput={handleInput} addPracticalElement={addPracticalElement} deletePracticalElement={deletePracticalElement}></PracticalElement>
         </div>
         <div className="practical-elements-container">
           <h2>Educational Experience</h2>
-          <EducationElement educationValues={educationValues} handleInput={handleInput} addEducationElement={addEducationElement}></EducationElement>
+          <EducationElement educationValues={educationValues} handleInput={handleInput} addEducationElement={addEducationElement} deleteEducationElement={deleteEducationElement} ></EducationElement>
         </div>
       </div>
       <div className="preview">

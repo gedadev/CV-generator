@@ -2,7 +2,7 @@ import { useState } from "react"
 import PracticalForm from "./practicalForm"
 import PracticalCollapsedElement from "./practicalCollapsed"
 
-function PracticalElement({ practicalValues, handleInput, addPracticalElement }) {
+function PracticalElement({ practicalValues, handleInput, addPracticalElement, deletePracticalElement }) {
     const [selectedItem, setSelectedItem] = useState(practicalValues[0].id)
 
     const changeSelectedItem = (id) => {
@@ -19,7 +19,7 @@ function PracticalElement({ practicalValues, handleInput, addPracticalElement })
         {
             practicalValues.map((element) => (
                 (selectedItem === element.id) ? (
-                    <PracticalForm practicalValues={element} handleInput={handleInput} key={element.id} changeSelectedItem={changeSelectedItem} />
+                    <PracticalForm practicalValues={element} handleInput={handleInput} key={element.id} changeSelectedItem={changeSelectedItem} deletePracticalElement={deletePracticalElement} />
                  ) : (
                     <PracticalCollapsedElement practicalValues={element} key={element.id} changeSelectedItem={changeSelectedItem} />
                 )

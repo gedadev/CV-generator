@@ -1,4 +1,4 @@
-function PracticalForm({ practicalValues, handleInput, changeSelectedItem }) {
+function PracticalForm({ practicalValues, handleInput, changeSelectedItem, deletePracticalElement }) {
     return (
         <div className="form education-info">
             <form>
@@ -13,7 +13,10 @@ function PracticalForm({ practicalValues, handleInput, changeSelectedItem }) {
                 <label htmlFor="end-company-date">End Date</label>
                 <input type="date" id="end-company-date" value={practicalValues.endDate} onChange={(e) => handleInput(practicalValues.id, e.target)} />
             </form>
-            <button type="button" className="button save-element" onClick={() => changeSelectedItem(null)}>Done</button>
+            <div className="btn-container">
+                <button type="button" className="button del-element" onClick={() => deletePracticalElement(practicalValues.id)}>Delete</button>
+                <button type="button" className="button save-element" onClick={() => changeSelectedItem(null)}>Done</button>
+            </div>
         </div>
     )
 }
