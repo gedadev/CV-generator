@@ -68,6 +68,8 @@ function App() {
       if (element.id !== id) update.push(element)
     })
     setPracticalValues(update)
+
+    update.length > 0 ? setPracticalValues(update) : setPracticalValues(practicalValues)
   }
 
   const deleteEducationElement = (id) => {
@@ -75,7 +77,8 @@ function App() {
     educationValues.forEach((element) => {
       if (element.id !== id) update.push(element)
     })
-    setEducationValues(update)
+
+    update.length > 0 ? setEducationValues(update) : setEducationValues(educationValues)
   }
 
   return (
