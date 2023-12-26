@@ -8,9 +8,9 @@ import EducationElement from './components/educationElement'
 import { v4 as uuid } from 'uuid';
 
 function App() {
-  const [contactValues, setContactValues] = useState(['name', 'mail', 'phone', 'address'])
-  const [educationValues, setEducationValues] = useState([{school: 'school', degree: 'degree', initDate: '2020-01-01', endDate: '2020-01-01', id: uuid()}])
-  const [practicalValues, setPracticalValues] = useState([{company: 'company', position: 'position', responsibilities: 'responsibilities', initDate: '2020-01-01', endDate: '2020-01-01', id: uuid()}])
+  const [contactValues, setContactValues] = useState(['John Dow', 'jdow@mail.com', '12 1234-1234', 'Mexico'])
+  const [practicalValues, setPracticalValues] = useState([{company: 'Mesa Verde Bank and Trust', position: 'CFO', responsibilities: 'Tracking cash flow and financial planning and analyzing the company\'s financial strengths and weaknesses and proposing strategic directions', initDate: '2020-01-01', endDate: '2020-01-01', id: uuid()}])
+  const [educationValues, setEducationValues] = useState([{school: 'Harvard Business School', degree: 'MBA', initDate: '2020-01-01', endDate: '2020-01-01', id: uuid()}])
   
   const updateContactStates = (index, newValue) => {
     const updatedArray = [...contactValues]
@@ -47,15 +47,19 @@ function App() {
   }
 
   const addEducationElement = () => {
+    const newElement = {school: '', degree: '', initDate: '', endDate: '', id: uuid()}
     const updatedArray = [...educationValues]
-    updatedArray.push({school: '', degree: '', initDate: '', endDate: '', id: uuid()})
+    updatedArray.push(newElement)
     setEducationValues(updatedArray)
+    return newElement.id
   }
 
   const addPracticalElement = () => {
+    const newElement = {company: '', position: '', responsibilities: '', initDate: '', endDate: '', id: uuid()}
     const updatedArray = [...practicalValues]
-    updatedArray.push({company: '', position: '', responsibilities: '', initDate: '', endDate: '', id: uuid()})
+    updatedArray.push(newElement)
     setPracticalValues(updatedArray)
+    return newElement.id
   }
 
   return (
@@ -64,13 +68,11 @@ function App() {
         <ContactForm contactValues={contactValues} handleContactInput={handleContactInput} />
         <div className="practical-elements-container">
           <h2>Practical Experience</h2>
-          <PracticalElement practicalValues={practicalValues} handleInput={handleInput}></PracticalElement>
-          <button className='button add-element' type="button" onClick={addPracticalElement}>+ Practical</button>
+          <PracticalElement practicalValues={practicalValues} handleInput={handleInput} addPracticalElement={addPracticalElement}></PracticalElement>
         </div>
         <div className="practical-elements-container">
           <h2>Educational Experience</h2>
-          <EducationElement educationValues={educationValues} handleInput={handleInput}></EducationElement>
-          <button className='button add-element' type="button" onClick={addEducationElement}>+ Education</button>
+          <EducationElement educationValues={educationValues} handleInput={handleInput} addEducationElement={addEducationElement}></EducationElement>
         </div>
       </div>
       <div className="preview">

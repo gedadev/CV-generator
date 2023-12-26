@@ -2,11 +2,16 @@ import { useState } from "react"
 import EducationForm from "./educationForm"
 import EducationCollapsedElement from "./educationCollapsed"
 
-function EducationElement({ educationValues, handleInput }) {
+function EducationElement({ educationValues, handleInput, addEducationElement }) {
     const [selectedItem, setSelectedItem] = useState(educationValues[0].id)
 
     const changeSelectedItem = (id) => {
         setSelectedItem(id)
+    }
+
+    const handleNewElement =() => {
+        const newElement = addEducationElement()
+        setSelectedItem(newElement)
     }
 
     return (
@@ -20,6 +25,7 @@ function EducationElement({ educationValues, handleInput }) {
                 )
             ))
         }
+        <button className='button add-element' type="button" onClick={handleNewElement}>+ Education</button>
         </>
     )
 }
