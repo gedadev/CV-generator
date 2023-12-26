@@ -36,6 +36,19 @@ body {
   width: clamp(300px, 35vw,440px);
 }
 
+.education-form-container, .practical-elements-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.education-info {
+  width: 90%;
+  background-color: rgb(130, 130, 130);
+  padding: 1rem 0;
+  margin: 0.5rem 0rem;
+}
+
 .form > h2, .education-form-container > h2, .practical-elements-container > h2 {
   margin: 1rem 0 0;
 }
@@ -84,14 +97,14 @@ body {
 .collapsed-element {
   display: flex;
   justify-content: space-between;
-  /* background-color: aqua; */
-  margin: 1rem;
+  width: 90%;
+  margin: 0.5rem 0rem;
   padding: 1rem;
   border-radius: 1rem;
   background-color: rgb(130, 130, 130);
 }
 
-.edit-element {
+.edit-element, .save-element {
   font-size: 1rem;
   padding: 0.2rem 0.8rem;
 }

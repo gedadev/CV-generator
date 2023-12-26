@@ -5,6 +5,7 @@ import ContactForm from './components/contactForm'
 import Preview from './components/preview'
 import EducationFormContainer from './components/educationFormContainer'
 import PracticalFormContainer from './components/practicalFormContainer'
+import PracticalElement from './components/practicalElement'
 import { v4 as uuid } from 'uuid';
 
 function App() {
@@ -62,8 +63,12 @@ function App() {
     <>
       <div className="content-information">
         <ContactForm contactValues={contactValues} handleContactInput={handleContactInput} />
-        <PracticalFormContainer practicalValues={practicalValues} handleInput={handleInput} addElement={addPracticalElement}></PracticalFormContainer>
-        <EducationFormContainer educationValues={educationValues} updateStates={handleInput} addElement={addEducationElement}></EducationFormContainer>
+        <div className="practical-elements-container">
+          <h2>Practical Experience</h2>
+          <PracticalElement practicalValues={practicalValues} handleInput={handleInput}></PracticalElement>
+          <button className='button add-element' type="button" onClick={addPracticalElement}>+ Practical</button>
+        </div>
+        {/* <EducationFormContainer educationValues={educationValues} updateStates={handleInput} addElement={addEducationElement}></EducationFormContainer> */}
       </div>
       <div className="preview">
         <Preview contactValues={contactValues} educationValues={educationValues} practicalValues={practicalValues}></Preview>

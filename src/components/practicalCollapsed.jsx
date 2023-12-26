@@ -1,13 +1,9 @@
-function PracticalCollapsedElement({ practicalValues }) {
+function PracticalCollapsedElement({ practicalValues, changeSelectedItem }) {
     return (
-        <>
-            {practicalValues.map((element) => (
-                <div className="collapsed-element">
-                    <p>{element.company}</p>
-                    <button type="button" className="button edit-element">Edit</button>
-                </div>
-            ))}
-        </>
+        <div className="collapsed-element" key={practicalValues.id}>
+            <p>{practicalValues.company}</p>
+            <button type="button" className="button edit-element" onClick={() => changeSelectedItem(practicalValues.id)}>Edit</button>
+        </div>
     )
 }
 
